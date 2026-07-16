@@ -42,7 +42,7 @@
         <!-- Google Maps API AnahtarÄ± -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyDqGHnk84GMRoCq9I0-_Ax1lLzACaFlEQs" />
+            android:value="${MAPS_API_KEY}" />
 
         <!-- Firebase FCM Servisi -->
         <service

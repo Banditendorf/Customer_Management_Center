@@ -9,7 +9,6 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     override fun onNewToken(token: String) {
         super.onNewToken(token)
-        Log.d("FCM", "Yeni Token: $token")
         // TODO: Firestore'a token'Ä± yaz
     }
 

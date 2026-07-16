@@ -158,9 +158,10 @@ object PhotoStorageHelper {
             val uri = session.uri
             if (uri.startsWith("/photo/")) {
                 val fileName = uri.removePrefix("/photo/")
-                val file = File(basePhotoFolder, fileName)
-                if (file.exists()) {
-                    return newChunkedResponse(Response.Status.OK, "image/jpeg", file.inputStream())
+                val baseCanonical = basePhotoFolder.canonicalFile
+                val fileCanonical = File(basePhotoFolder, fileName).canonicalFile
+                if (fileCanonical.exists() && fileCanonical.startsWith(baseCanonical)) {
+                    return newChunkedResponse(Response.Status.OK, "image/jpeg", fileCanonical.inputStream())
                 }
             }
             return newFixedLengthResponse(Response.Status.NOT_FOUND, "text/plain", "Not Found")
